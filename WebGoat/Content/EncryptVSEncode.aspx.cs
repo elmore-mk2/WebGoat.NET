@@ -91,13 +91,17 @@ namespace OWASP.WebGoat.NET
 			switch(hash){
 				case WG_Hash.Sha1:
 					sha = new SHA1Managed();
-			    	break;
+                    result = sha.ComputeHash(bytes);
+                    return System.Convert.ToBase64String(result);
+                    // break;
 				case WG_Hash.Sha256:
 					sha = new SHA256Managed();
-					break;
+                    result = sha.ComputeHash(bytes);
+                    return System.Convert.ToBase64String(result);
+                    // break;
 			}
-			result = sha.ComputeHash(bytes);
-			return System.Convert.ToBase64String(result);
+            return null;
+			// return System.Convert.ToBase64String(result);
     	}
 
         private string Encypt(string s, string key)
